@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+
+  client:
+    build: ./movies-database-api-frontend
+    ports:
+      - "5000:3000"
+    stdin_open: true
+    tty: true
+
+  server:
+    build: ./movie-api-backend
+    ports:
+     - "5001:3000"
+    stdin_open: true
+    tty: true
+    depends_on: 
+      - "mongo"
+
+
+  
+  mongo:
+    image: mongo
+    ports: 
+      - "27017:27017"
+    volumes:
+      - mongodbdata:/app
+
+
+volumes:
+  mongodbdata:
+    external: true
