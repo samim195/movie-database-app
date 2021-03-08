@@ -3,14 +3,14 @@ version: '3'
 services:
 
   client:
-    build: ./movies-database-api-frontend
+    build: ./api-clientside
     ports:
       - "5000:3000"
     stdin_open: true
     tty: true
 
   server:
-    build: ./movie-api-backend
+    build: ./api-serverside
     ports:
      - "5001:3000"
     stdin_open: true
